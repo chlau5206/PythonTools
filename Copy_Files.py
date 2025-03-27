@@ -4,6 +4,8 @@ These project folders have various amounts/levels of subfolders. I want
 to create new folders with the same name as the project folders in another 
 folder. Then I want to copy files with specific names into the correct 
 newly created project folder. 
+
+Copyright (c) 2025 CHLAU5206
 """
 from concurrent.futures import ThreadPoolExecutor
 import os
@@ -63,66 +65,12 @@ class Logger:
 
         return logger
 
-"""    def create_logger(log_folder):
-
-        # Ensure the logs directory exists
-        log_directory = os.path.join(log_folder, 'logs')
-    
-        # Create the target folder if it doesn't exist
-        os.makedirs(log_directory, exist_ok=True)
-
-
-        # Create a formatter
-        formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-
-        # Create a rotating file handler
-        file_handler = RotatingFileHandler(       # 10MB 
-            os.path.join(log_directory, 'app.log'), maxBytes=10*1024*1024, backupCount=5)
-        file_handler.setLevel(logging.DEBUG)
-        file_handler.setFormatter(formatter)
-
-        # Create a stream handler for console output
-        stream_handler = logging.StreamHandler()
-        stream_handler.setLevel(logging.DEBUG)
-        stream_handler.setFormatter(formatter)
-
-        # Add handlers to the app logger
-        logger.addHandler(file_handler)
-        logger.addHandler(stream_handler)
-        logger.setLevel(logging.DEBUG)
-
-        # Get the named logger
-        logger = logging.getLogger(__name__)
-        logger.setLevel(logging.DEBUG)
-        logger.addHandler(file_handler)
-        logger.addHandler(stream_handler)
-
-        # Clear existing handlers to avoid duplicates
-        if logger.hasHandlers():
-            logger.handlers.clear()
-
-        logger.addHandler(file_handler)
-        logger.addHandler(stream_handler)
-'''
-        logger usage:
-            # Log messages at different levels
-            logger.debug('This is a debug message')
-            logger.info('This is an info message')
-            logger.warning('This is a warning message')
-            logger.error('This is an error message')
-            logger.critical('This is a critical message')
-'''        
-        return logger
-"""
-
-
 """ copy files by extensions """
 def copy_file_ext(input_dir, output_dir, search_words):
 
     # Create the target folder if it doesn't exist
     os.makedirs(output_dir, exist_ok=True)
 
-    
     def copy_file(source_path):
         try:
             shutil.copy2(source_path, output_dir)
